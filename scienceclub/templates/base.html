@@ -4,6 +4,14 @@
 
 <head>
    {% block head %}
+    <style>
+    ul a {
+          color: black !important;
+    }
+    ul a:hover {
+      background-color: #ffba59;
+    }
+    </style>
       <meta charset="UTF-8">
 
        <!-- Import Bootstrap CSS v4.6.1 -->
@@ -24,11 +32,12 @@
 <body>
 {% block body %}
 
-<div style="text-align:center;">
-  <ul class="navbar navbar-expand navbar-light bg-light sticky-top" style="">
+<div style="height: 100vh; text-align:center; background-color: #c9deff">
+  <ul class="navbar navbar-expand navbar-light bg-light sticky-top" style="background-color: orange !important;">
       <a href="/community/" class="nav-item nav-link">Community</a>
       <a href="/accounts/topProfiles/" class="nav-item nav-link">Scientists</a>
       <a href="/community/projects/" class="nav-item nav-link">Projects</a>
+      <a href="/community/projects/" class="nav-item nav-link">Discussions</a>
         <div style="width: 100%;"></div>
       <a href="/accounts/viewProfile/" class="nav-item nav-link">Profile</a>
   </ul>

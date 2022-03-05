@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.views import signup, login, viewProfile, editProfile, topProfiles
+from accounts.views.views import signup, login, viewProfile, editProfile, topProfiles
 
 app_name='accounts'
 
