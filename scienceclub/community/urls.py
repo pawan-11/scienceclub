@@ -6,6 +6,6 @@ from community.views import index
 app_name='accounts'
 
 urlpatterns = [
-    path('index/', index, name='index'),
+    path('', index, name='index'),
 
 ]

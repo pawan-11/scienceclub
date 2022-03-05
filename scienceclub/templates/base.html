@@ -5,28 +5,37 @@
 <head>
    {% block head %}
       <meta charset="UTF-8">
+
        <!-- Import Bootstrap CSS v4.6.1 -->
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
-        <link rel="stylesheet" href="/templates/style.css">
-        <link rel="icon" href="{% static 'imgs/icon.png' %}">
-      {% endblock %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <!-- Import Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+        <!-- Import jQuery and Bootstrap JS (for simple animations) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!--link rel="stylesheet" href="{% static 'style.css' %}" -->
+        <!-- link rel="icon" href="{% static 'imgs/icon.png' %}" -->
+    {% endblock %}
 </head>
 
 
 
 <body>
-{% block navbar %}
+{% block body %}
 
-  <ul id="navbar" style="">
-      <a href="/home/" class="nav-item nav-link">Home</a>
-      <a href="/images/" class="nav-item nav-link">Images</a>
-      <a href="/projects/" class="nav-item nav-link">Projects</a>
-      <a href="/philosophy/" class="nav-item nav-link">Philosophy</a>
-
-      <div style="width: 100%;"></div>
-      <a href="/profile/" class="nav-item nav-link">Profile</a>
+<div style="text-align:center;">
+  <ul class="navbar navbar-expand navbar-light bg-light sticky-top" style="">
+      <a href="/community/" class="nav-item nav-link">Community</a>
+      <a href="/accounts/topProfiles/" class="nav-item nav-link">Scientists</a>
+      <a href="/community/projects/" class="nav-item nav-link">Projects</a>
+        <div style="width: 100%;"></div>
+      <a href="/accounts/viewProfile/" class="nav-item nav-link">Profile</a>
   </ul>
+
+
 {% endblock %}
+</div>
 
 </body>
 </html>
