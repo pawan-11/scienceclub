@@ -35,71 +35,62 @@
 
 <h1 class="header">Become a Scientist</h1>
 <br>
-<form>
+<form method="post" action="">
+{% csrf_token %}
 <table>
 <tr>
 <td><label for="username">Username:</label></td>
-<td><input class="rounded" type="text" id="username" required/></td><td/><br>
+<td><input class="rounded" type="text" id="username" name="username" value="{{ request.POST.username }}" required/></td><td/><br>
 </tr>
 <tr>
 <td><label for="password1">Password:</label></td>
-<td><input class="rounded" type="text" id="password1" required/></td><td/><br>
+<td><input class="rounded" type="password" id="password1" name="password1" required/></td><td/><br>
 </tr>
 <tr>
 <td><label for="password2">Password:</label></td>
-<td><input class="rounded" type="text" id="password2" required/></td><td/><br>
+<td><input class="rounded" type="password" id="password2" name="password2" required/></td><td/><br>
 </tr>
 <tr>
 <td><label for="email">Email:</label></td>
-<td><input class="rounded" type="text" id="email"/></td><td>*Optional</td><br>
+<td><input class="rounded" type="email" id="email" name="email"/></td><td>*Optional</td><br>
 </tr>
 </table>
 <br>
 <!-- avatars div from https://codepen.io/mbrillaud/pen/emVjed -->
 
-<label for="avatars">Pick your Scientific Avatar</label><br>
+<label for="avatars">Pick your Avatar</label><br>
 
 <div id="avatars">
-  <form>
   <label class="avatars">
     <input type="radio" name="avatar" checked="checked"/>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS4p5jkOjfAU8kaqvq2965_jQ42lhIAu3Xzw&usqp=CAU" alt=""/>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS4p5jkOjfAU8kaqvq2965_jQ42lhIAu3Xzw&usqp=CAU"/>
   </label>
 
   <label class="avatars">
     <input type="radio" name="avatar" value="on"/>
-    <img src="https://img.freepik.com/free-vector/portrait-african-american-woman-profile-avatar-young-black-girl_102172-418.jpg" alt=""/>
+    <img src="https://img.freepik.com/free-vector/portrait-african-american-woman-profile-avatar-young-black-girl_102172-418.jpg"/>
   </label>
 
   <label class="avatars">
     <input type="radio"name="avatar"/>
-    <img src="https://thumbs.dreamstime.com/b/cute-color-vector-illustration-beard-afro-black-guy-face-avatar-positive-young-black-guy-smiling-87383651.jpg" alt=""/>
+    <img src="https://thumbs.dreamstime.com/b/cute-color-vector-illustration-beard-afro-black-guy-face-avatar-positive-young-black-guy-smiling-87383651.jpg"/>
   </label>
 
   <label class="avatars">
     <input type="radio" name="avatar"/>
-    <img src="https://img.freepik.com/free-vector/portrait-caucasian-woman-profile-with-long-hair-avatar-young-white-girl_102172-419.jpg" alt=""/>
+    <img src="https://img.freepik.com/free-vector/portrait-caucasian-woman-profile-with-long-hair-avatar-young-white-girl_102172-419.jpg"/>
   </label>
 
   <label class="avatars">
     <input type="radio" name="avatar"/>
-    <img src="https://cdn2.iconfinder.com/data/icons/teen-people-face-avatar-2/500/high_134-512.png" alt="" />
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp0inalBnvRcvbsqUAJkO97yTlLeFTWHJmD0_LFklW-Vz9UuZTCc2_DgH80TyylprtWYs&usqp=CAU"/>
   </label>
-
-  <label class="avatars">
-    <input type="radio" name="avatar"/>
-    <img src="https://cdn2.iconfinder.com/data/icons/cartoon-avatars/128/Avatars_African_American_woman-512.png" alt="" />
-  </label>
-
-  <label class="avatars">
-    <input type="radio" name="avatar"/>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp0inalBnvRcvbsqUAJkO97yTlLeFTWHJmD0_LFklW-Vz9UuZTCc2_DgH80TyylprtWYs&usqp=CAU" alt="" />
-  </label>
-  </form>
 </div>
 
-<br>
-<tr><input type="submit" value="Register"/></tr>
+{% if error %}
+  <p style="color: red;">*{{ error }}</p>
+{% endif %}
+<input type="submit" value="Register"/>
 
 </form>
 
