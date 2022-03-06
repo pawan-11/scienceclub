@@ -1,0 +1,85 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" "text/css" href="{% static 'style.css' %}">
+  <title>Science Club</title>
+  <style>
+    img {
+      width: 20vw;
+    }
+    .scientists img {
+      width: 10px;
+      height: 10px;
+    }
+  </style>
+{% endblock %}
+
+
+{% block body %}
+{{ block.super }}
+
+<!-- Your html body goes here -->
+<h1 class="header rounded">Scientists</h1>
+<br>
+<table>
+<tr>
+<td>
+<a href="https://www.biography.com/scientist/alice-ball">
+<img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTUzNTUzNjcyOTE0MDg0OTIw/alice-ball-larger.jpg" alt="scientist"/>
+<h6>Alice Ball</h6>
+</a>
+</td>
+<td>
+<a href="https://www.biography.com/scientist/neil-degrasse-tyson">
+<img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTc5ODc1MzY3NjM5NTkwOTAx/gettyimages-487238689.jpg" alt="scientist"/>
+<h6>Neil deGrasse Tyson</h6>
+</a>
+</td>
+<td>
+<a href="https://www.biography.com/scientist/percy-julian">
+<img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTgwMzY3ODgzODg3NDU0MDYw/gettyimages-514977654.jpg" alt="scientist"/>
+<h6>Percy Julian</h6>
+</a>
+</td>
+<td>
+<a href="https://www.biography.com/astronaut/mae-c-jemison">
+<img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE1ODA0OTcxODY2MjkzNzcz/mae-jemison-9542378-1-402.jpg" alt="scientist"/>
+<h6>Mae C. Jemison</h6>
+</a>
+</td>
+<td>
+<a href="https://www.biography.com/scientist/george-washington-carver">
+<img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTc5OTUwMDc2OTg1MDkxMTk0/gettyimages-3243102.jpg" alt="scientist"/>
+<h6>George Washington Carver</h6>
+</a>
+</td>
+</tr>
+</table>
+<form action="https://www.biography.com/people/groups/black-scientists">
+<button class="btn btn-info" type="submit">Learn More</button>
+</form>
+
+<br>
+<h4 class="header rounded">Famous Science Club Scientists</h4>
+<br>
+<table class="scientists">
+<ol>
+{% block content %}
+
+    {% for s in scientists %}
+      <li><tr>
+      <td><img src="{{ s.avatar.url }}" alt="avatar"/></td>
+      <td>{{ s.name }}</td>
+      <td>{{ s.email }}</td>
+      </tr></li>
+    {% endfor %}
+
+{% endblock %}
+</ol>
+</table>
+
+
+{% endblock %}
