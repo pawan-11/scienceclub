@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from community.views.views import index
 
 urlpatterns = [
+    path('', index, name='index'),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('community/', include('community.urls', namespace='community')),
     path('projects/', include('projects.urls', namespace='projects')),
