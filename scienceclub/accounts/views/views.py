@@ -21,17 +21,20 @@ def login(request):
 
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
-
-
-    user = Scientist.objects.get(username=username)
-    if not user:
-        context={"username_error": "Username is not registered"}
-    else:
+    context = {}
+    try:
+        user = Scientist.objects.get(username=username)
         user = authenticate(username=username, password=password)
         if user:
             auth_login(request, user)
         else:
-            context={"password_error": "Invalid password"}
+            context["password_error"] = "Invalid password"
+    except:
+        context["username_error"] = "Username is not registered"
+
+    if len(context) > 0:
+        return render(request, "login.html", context)
+
     return redirect("/accounts/viewProfile/")
 
 def signup(request):

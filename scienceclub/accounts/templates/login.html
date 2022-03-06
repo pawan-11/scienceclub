@@ -10,6 +10,9 @@
     table {
       margin: 0 auto;
     }
+    table td {
+      margin: 0 auto;
+    }
   </style>
 {% endblock %}
 
@@ -18,19 +21,27 @@
 {{ block.super }} <!-- adds the navigation bar -->
 
 <!-- Your html body goes here -->
-<h1 class="header">Log In Scientist</h1>
+<h1 class="header">Log In Scientist</h1><br>
 <form method="post" action="">
 {% csrf_token %}
 <table>
 <tr>
 <td><label for="username">Username:</label></td>
-<td><input class="rounded" type="text" id="username" name="username" value="{{ request.POST.username }}" required/></td><td/><br><br>
+<td><input class="rounded" type="text" id="username" name="username" value="{{ request.POST.username }}" required/></td>
+<td>{% if username_error %}
+  <p style="color: red;">*{{ username_error }}</p>
+{% endif %}</td>
 </tr>
 <tr>
 <td><label for="password">Password:</label></td>
-<td><input class="rounded" type="password" id="password" name="password" required/></td><td/><br><br>
+<td><input class="rounded" type="password" id="password" name="password" required/></td>
+<td>{% if password_error %}
+  <p style="color: red;">*{{ password_error }}</p>
+{% endif %}</td>
 </tr>
 </table>
+
+
 <input type="submit" style="padding-left:10px;padding-right:10px;" value="Enter"/><br>
 <br>
 <img src="https://www.azquotes.com/picture-quotes/quote-if-the-only-time-you-think-of-me-as-a-scientist-is-during-black-history-month-then-i-neil-degrasse-tyson-29-92-56.jpg" style="width:50%;"/>
