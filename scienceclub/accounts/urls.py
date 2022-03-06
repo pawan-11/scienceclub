@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from accounts.views.views import signup, login, viewProfile, editProfile, topProfiles
+from accounts.views.views import signup, login, viewProfile, editProfile
 
 app_name='accounts'
 
@@ -10,5 +10,4 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('viewProfile/', viewProfile, name='viewProfile'),
     path('editProfile/', editProfile, name='signup'),
-    path('topProfiles/', signup, name='topProfiles'),
 ]

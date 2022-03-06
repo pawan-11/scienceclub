@@ -7,7 +7,23 @@
   <link rel="stylesheet" "text/css" href="{% static 'style.css' %}">
   <title>Science Club</title>
   <style>
-
+    .avatars > input{
+      display: none;
+    }
+    .avatars img {
+      width:50px;
+      height:50px;
+    }
+    .avatars > input + img{
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .avatars > input:checked + img{
+      border: 2px solid red;
+    }
+    table {
+      margin: 0 auto;
+    }
   </style>
 {% endblock %}
 
@@ -16,8 +32,78 @@
 {{ block.super }}
 
 <!-- Your html body goes here -->
-<h1>Become a Science Club member</h1>
+
+<h1 class="header">Become a Scientist</h1>
+<br>
+<form>
+<table>
+<tr>
+<td><label for="username">Username:</label></td>
+<td><input class="rounded" type="text" id="username" required/></td><td/><br>
+</tr>
+<tr>
+<td><label for="password1">Password:</label></td>
+<td><input class="rounded" type="text" id="password1" required/></td><td/><br>
+</tr>
+<tr>
+<td><label for="password2">Password:</label></td>
+<td><input class="rounded" type="text" id="password2" required/></td><td/><br>
+</tr>
+<tr>
+<td><label for="email">Email:</label></td>
+<td><input class="rounded" type="text" id="email"/></td><td>*Optional</td><br>
+</tr>
+</table>
+<br>
+<!-- avatars div from https://codepen.io/mbrillaud/pen/emVjed -->
+
+<label for="avatars">Pick your Scientific Avatar</label><br>
+
+<div id="avatars">
+  <form>
+  <label class="avatars">
+    <input type="radio" name="avatar" checked="checked"/>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS4p5jkOjfAU8kaqvq2965_jQ42lhIAu3Xzw&usqp=CAU" alt=""/>
+  </label>
+
+  <label class="avatars">
+    <input type="radio" name="avatar" value="on"/>
+    <img src="https://img.freepik.com/free-vector/portrait-african-american-woman-profile-avatar-young-black-girl_102172-418.jpg" alt=""/>
+  </label>
+
+  <label class="avatars">
+    <input type="radio"name="avatar"/>
+    <img src="https://thumbs.dreamstime.com/b/cute-color-vector-illustration-beard-afro-black-guy-face-avatar-positive-young-black-guy-smiling-87383651.jpg" alt=""/>
+  </label>
+
+  <label class="avatars">
+    <input type="radio" name="avatar"/>
+    <img src="https://img.freepik.com/free-vector/portrait-caucasian-woman-profile-with-long-hair-avatar-young-white-girl_102172-419.jpg" alt=""/>
+  </label>
+
+  <label class="avatars">
+    <input type="radio" name="avatar"/>
+    <img src="https://cdn2.iconfinder.com/data/icons/teen-people-face-avatar-2/500/high_134-512.png" alt="" />
+  </label>
+
+  <label class="avatars">
+    <input type="radio" name="avatar"/>
+    <img src="https://cdn2.iconfinder.com/data/icons/cartoon-avatars/128/Avatars_African_American_woman-512.png" alt="" />
+  </label>
+
+  <label class="avatars">
+    <input type="radio" name="avatar"/>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp0inalBnvRcvbsqUAJkO97yTlLeFTWHJmD0_LFklW-Vz9UuZTCc2_DgH80TyylprtWYs&usqp=CAU" alt="" />
+  </label>
+  </form>
+</div>
+
+<br>
+<tr><input type="submit" value="Register"/></tr>
+
+</form>
 
 
+</div>
 
 {% endblock %}

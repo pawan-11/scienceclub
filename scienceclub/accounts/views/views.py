@@ -14,6 +14,3 @@ def viewProfile(request):
 
 def editProfile(request):
     return render(request, "editProfile.html")
-
-def topProfiles(request):
-    return render(request, "topProfiles.html")
