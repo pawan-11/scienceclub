@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# pip3 install django
-# pip3 install --upgrade djangorestframework-simplejwt
-# pip3 install pillow
+virtualenv -p $(which python3.9) venv
+source venv/bin/activate
+pip3 install django
+pip3 install --upgrade djangorestframework-simplejwt
+pip3 install pillow
 ./manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
