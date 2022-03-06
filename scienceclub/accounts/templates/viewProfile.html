@@ -6,18 +6,94 @@
   {{ block.super }}
   <link rel="stylesheet" "text/css" href="{% static 'style.css' %}">
   <title>Science Club</title>
-  <style>
 
+  <style>
+    table {
+      margin: 0 auto;
+      width: 100%;
+    }
+    td {
+      color: white;
+      text-shadow: -1px -1px 2px black;
+      text-shadow:
+       -1px -1px 0 #000,
+        0   -1px 0 #000,
+        1px -1px 0 #000,
+        1px  0   0 #000,
+        1px  1px 0 #000,
+        0    1px 0 #000,
+       -1px  1px 0 #000,
+       -1px  0   0 #000;
+      font-size: 1.5rem;
+    }
+    table tr td {
+      padding-bottom: 15px;
+      margin: 0 auto;
+    }
+    table tr td:nth-child(1) {
+      border-right: 3px solid white;
+      width: 50%;
+      padding-right: 20px;
+      text-align: right;
+    }
+    table tr td:nth-child(2) {
+      padding-left: 20px;
+      width: 50%;
+      text-align: left;
+    }
   </style>
 {% endblock %}
 
 
 {% block body %}
+
 {{ block.super }}
+<div style="width: 100vw; min-height: 100vh; background-image: url('https://c.tenor.com/yu4yJBMcidMAAAAd/space.gif');">
 
 <!-- Your html body goes here -->
-<h1>View your profile</h1>
+<!--{% widthratio request.user.experience 1000 1 %}-->
 
+<h1 class="header">Scientist profile</h1>
+<br>
+<table>
+<tr><td>Username</td><td>{{ request.user.username }}</td></tr>
+{% if request.user.avatar %}
+<tr><td>Email</td><td>{{ request.user.email }}</td></tr>
+{% endif %}
+<tr><td>Level</td><td>{{ request.user.level }}</td></tr>
 
+{% if request.user.avatar %}
+  <tr><td>Avatar</td><td><img src="{{ request.avatar.url }}"</td></tr>
+{% endif %}
+</table>
+<br>
+<form action="/accounts/profile/edit/">
+<button id="signup" class="rounded btn btn-primary" type="submit" style="padding-left:10px;padding-right:10px;">
+  Edit Profile</button>
+</form>
+
+<br><br>
+
+<h3 class="header">Your Projects</h3>
+<table>
+<ol>
+{% block myprojects %}
+  {% for project in projects %}
+    <li>
+    <tr>
+    <td>{{ project.name }}</td>,<td>{{ project.likes }}likes
+    </tr>
+    <tr>
+    <td>Description: {{ project.description }}</td>
+    </li>
+  {% endfor %}
+{% endblock %}
+</ol>
+<!--
+{% block projects %}
+  { include 'projectList.html' }
+{% endblock %} -->
+
+</div>
 
 {% endblock %}

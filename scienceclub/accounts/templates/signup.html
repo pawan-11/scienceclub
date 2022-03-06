@@ -35,6 +35,7 @@
 
 <h1 class="header">Become a Scientist</h1>
 <br>
+<img src="{% static 'imgs/science.png' %}" style="width: 200px;">
 <form method="post" action="">
 {% csrf_token %}
 <table>
@@ -47,7 +48,7 @@
 <td><input class="rounded" type="password" id="password1" name="password1" required/></td><td/><br>
 </tr>
 <tr>
-<td><label for="password2">Password:</label></td>
+<td><label for="password2">Confirm Password:</label></td>
 <td><input class="rounded" type="password" id="password2" name="password2" required/></td><td/><br>
 </tr>
 <tr>
@@ -90,11 +91,21 @@
 {% if error %}
   <p style="color: red;">*{{ error }}</p>
 {% endif %}
-<input type="submit" value="Register"/>
+<input class="rounded btn btn-primary" type="submit" value="Register"/>
 
 </form>
+<br>
+<img class="rounded" src="{% static 'imgs/granville.png' %}" style="width:40%;"/>
+<p>The master of Inventions and Patents, Granville T. Woods was a prominent inventor and electrical engineer who developed inventions that were awarded 27 patents by the U.S. Patent Office between 1884 and 1903. Because of his significant electrical inventions he is known as the “Black Edison.”
 
+Over the course of his lifetime Granville Woods obtained more than 50 patents for inventions including an automatic brake, an egg incubator, and for improvements to other technologies such as the safety circuit, telegraph, telephone, and phonograph.
 
+People have been stealing and taking credit for his inventions and patents throughout history! This gentleman invented the precursor to the telephone and Thomas Edison tried to take credit for his idea but Mr. Woods put out a lawsuit against him and won!
+
+Later on, Mr. Edison tried to get him to work at his company but Mr. Woods rightfully declined the offer!
+
+Let’s give this man his roses. He definitely paved the way for future black engineers, inventors, and patent holders!</p>
+<a href="https://www.instagram.com/p/CaY11zJLYZP/" value="Source"/>Source
+<br><br>
 </div>
-
 {% endblock %}

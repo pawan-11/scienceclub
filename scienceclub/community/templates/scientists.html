@@ -71,8 +71,10 @@
 
     {% for s in scientists %}
       <li><tr>
-      <td><img src="{{ s.avatar.url }}" alt="avatar"/></td>
-      <td>{{ s.name }}</td>
+      {% if s.avatar %}
+        <td><img src="{{ s.avatar.url }}" alt="avatar"/></td>
+      {% endif %}
+      <td>{{ s.username }}</td>
       <td>{{ s.email }}</td>
       </tr></li>
     {% endfor %}

@@ -10,8 +10,11 @@ from django.urls import reverse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 
 from accounts.models import Scientist
+from django.views.generic import FormView, DetailView, ListView, UpdateView
+from projects.models import Project
 # Create your views here.
 
 
@@ -35,7 +38,7 @@ def login(request):
     if len(context) > 0:
         return render(request, "login.html", context)
 
-    return redirect("/accounts/viewProfile/")
+    return redirect("/accounts/profile/view/")
 
 def signup(request):
     if request.method=="GET":
@@ -70,7 +73,33 @@ def signup(request):
     return redirect("/accounts/login/")
 
 def viewProfile(request):
-    return render(request, "viewProfile.html")
+    user = request.user
+    if not user.is_authenticated:
+        return redirect("/accounts/login/")
+    context = {}
+    context['projects'] = user.projects.all()
+    #context['projects'] = Project.objects.filter(creator=user)
+    return render(request, "viewProfile.html", context=context)
 
 def editProfile(request):
-    return render(request, "editProfile.html")
+    if not request.user.is_authenticated:
+        return redirect("/accounts/login/")
+
+    if request.method=="GET":
+        return render(request, "editProfile.html")
+
+    email = request.POST.get('email', '')
+    password1 = request.POST.get('password1', '')
+    password2 = request.POST.get('password2', '')
+    context = {}
+    if password1:
+        if password1 != password2:
+            context['error'] = "Passwords do not match"
+    if email:
+        try:
+            validate_email(email)
+        except:
+            context['error'] = "Email is invalid"
+    if len(context) > 0:
+        return render(request, "editProfile.html", context=context)
+    return redirect("/accounts/profile/view/")

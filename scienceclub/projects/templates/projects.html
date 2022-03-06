@@ -1,0 +1,43 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" "text/css" href="{% static 'style.css' %}">
+  <title>Science Club</title>
+  <style>
+
+  </style>
+{% endblock %}
+
+
+{% block body %}
+{{ block.super }}
+<!-- Your html body goes here -->
+<h1 class="header">Science Club Projects</h1>
+
+<form action="/projects/">
+<button id="signup" class="rounded btn btn-primary" type="submit" style="padding-left:10px;padding-right:10px;">
+  Add Project</button>
+</form>
+
+<table>
+<ol>
+{% for project in projects %}
+    <li>
+    <tr>
+    <!-- link to author profile -->
+    <td><a href="">{{ project.author.username }}</a>, {{ project.name }}</td>,<td>{{ project.likes }}likes
+    </tr>
+    <tr>
+    <td>Description: {{ project.description }}</td>
+    </tr>
+    </li>
+{% endfor %}
+
+</ol>
+</table>
+
+
+{% endblock %}
